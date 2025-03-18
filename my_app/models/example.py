@@ -10,56 +10,58 @@ class Example(BaseModel):
         verbose_name="Descrição",
     )
 
-qualitity = models.IntegerField(
-    validators=[MinValueValidator(0), MaxValueValidator(100)],
-    default=50,
-    help_text="Valor número para a qualidade do exemplo. Entre 0 e 100.",
-    verbose_name="Qualidade",
+    qualitity = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        default=50,
+        help_text="Valor número para a qualidade do exemplo. Entre 0 e 100.",
+        verbose_name="Qualidade",
 
-)
+    )
 
-balance = models.DecimalField(
-    validators=[MinValueValidator(0), MaxValueValidator(1000)],
-    max_digits=6, decimal_places=2, default=0.00,
-    help_text="Saldo financeiro. Valores entre 0 e 1000.",
-    verbose_name="Saldo",
+    balance = models.DecimalField(
+        validators=[MinValueValidator(0), MaxValueValidator(1000)],
+        max_digits=6, decimal_places=2, default=0.00,
+        help_text="Saldo financeiro. Valores entre 0 e 1000.",
+        verbose_name="Saldo",
 
-)
+    )
 
-percentagem = models.FloatField(
-    validators=[MinValueValidator(0), MaxValueValidator(100)],
-    default=0.00, null=True, blank=True,
-    help_text="Um exemplo de Float. Entre o e 100. Diversas casas decimais.",
-    verbose_name="Percentagem",
+    percentagem = models.FloatField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        default=0.00, null=True, blank=True,
+        help_text="Um exemplo de Float. Entre o e 100. Diversas casas decimais.",
+        verbose_name="Percentagem",
 
-)
+    )
 
-email = models.EmailField(
-    max_length=254, null=False, blank=False, unique=True,
-    help_text="E-mail do exemplo",
-    verbose_name="E-mail",
+    email = models.EmailField(
+        max_length=254, null=False, blank=False, unique=True,
+        help_text="E-mail do exemplo",
+        verbose_name="E-mail",
+        default = "default@gmail.com",
 
-)
+    )
 
-url = models.URLField(
-    max_length=(254), null=False, blank=False,
-    help_text="URL externa.",
-    verbose_name="URL",
+    url = models.URLField(
+        max_length=(254), null=False, blank=False,
+        help_text="URL externa.",
+        verbose_name="URL",
+        default = "www.teste.com"
 
-)
+    )
 
-status = models.CharField(
-    max_length=3, null=False, blank=False,
-    choices=Status, default=Status.NEW,
-    help_text="Selecione o status para o exemplo.",
-    verbose_name="Status",
+    status = models.CharField(
+        max_length=3, null=False, blank=False,
+        choices=Status, default=Status.NEW,
+        help_text="Selecione o status para o exemplo.",
+        verbose_name="Status",
 
-)
+    )
 
-def __str__(self):
-    return f"{self.description} ({self.status}-{self.get_status_display()})"
+    def __str__(self):
+        return f"{self.description} ({self.status}-{self.get_status_display()})"
 
-class Meta:
-    verbonse_name = "Exemplo",
-    verbose_name_plural = "Exemplos",
-    ordering = ("status", "description",),
+    class Meta:
+        verbose_name = "Exemplo"
+        verbose_name_plural = "Exemplos"
+        ordering = ("status", "description",)
