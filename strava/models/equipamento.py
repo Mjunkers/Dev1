@@ -77,4 +77,8 @@ class Equipamento(BaseModel):
     )
 
     def __str__(self):
-        f"{self.nome} {self.marca} {self.modelo} {self.apelido} {self.equipamento}"
+        return f"{self.nome} {self.marca} {self.modelo} {self.apelido} {self.equipamento}"
+    
+    class Meta:
+        verbose_name = "Equipamento"
+        verbose_name_plural = "Equipamentos"

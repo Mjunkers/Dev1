@@ -100,4 +100,4 @@ class Perfil(BaseModel):
     class Meta:
         verbose_name = "Perfil"
         verbose_name_plural = "Perfis"
-        ordering =('premium', 'nome', 'data_nascimento', 'local', 'pais', 'generos', 'peso', 'membro_desde',)
+        

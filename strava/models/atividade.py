@@ -48,3 +48,24 @@ class Atividade(BaseModel):
         help_text="Pace",
         verbose_name="Ritmo",
     )
+
+    calorias = models.IntegerField(
+        validators=[MinValueValidator(0)], default=0,
+        null=False, blank=False,
+        help_text="Calorias gastas no execício",
+        verbose_name="Calorias",
+    )
+
+    elevacao = models.IntegerField(
+        default=0,
+        null=False, blank=False,
+        help_text="--",
+        verbose_name="Elevação",
+    )
+
+    def __str__(self):
+        f"{self.nome} {self.observacoes} {self.data} {self.esporte} {self.duracao} {self.distancia} {self.ritmo} {self.calorias} {self.elevacao}"
+    
+    class Meta:
+        verbose_name = "Atividade"
+        verbose_name_plural = "Atividades"
