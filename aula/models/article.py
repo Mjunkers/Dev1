@@ -21,4 +21,8 @@ class Article(BaseModel):
 
     reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)
 
-    magazine = models.ManyToManyField(Magazine)
+    #magazine = models.ManyToManyField(Magazine)
+
+
+    magazines = models.ManyToManyField(Magazine, null = True, blank=True, through="Publication", through_fields=("article", "magazine"))
+

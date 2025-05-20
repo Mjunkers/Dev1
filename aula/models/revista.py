@@ -1,7 +1,7 @@
 from django.db import models
 from .base_model import BaseModel
 from django.core.validators import MinLengthValidator
-from .article import Article
+
 
 
 class Magazine(BaseModel):

@@ -1,7 +1,9 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
-from .base_model import BaseModel
+from ...my_app.models.base_model import BaseModel
 from django.db import models
 from my_app.enumerations import Status
+from aula.managers import ExemploManager
+
 
 class Example(BaseModel):
     description = models.CharField(
@@ -10,6 +12,8 @@ class Example(BaseModel):
         verbose_name="Descrição",
     )
 
+
+    objects = ExemploManager()
     qualitity = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)],
         default=50,
